@@ -14,8 +14,8 @@ def get_problems_by_rating(desired_rating):
         raise Exception("Failed to fetch problems from Codeforces API")
 
     filtered_problems = [
-        problem for problem in problems['result']['problems']
-        if 'rating' in problem and problem['rating'] == desired_rating
+        problem for problem in problems['result']['problems'] 
+        if 'rating' in problem and problem['rating'] == desired_rating and problem["contestId"] >= 1500
     ]
     
     return filtered_problems
@@ -42,6 +42,7 @@ def get_solved_problems(user_handle):
 def get_problems(codeforcesUsers, rating, problemsNumber):
 
     problems_by_ratng = get_problems_by_rating(rating)
+
     shuffle(problems_by_ratng)
 
     solved_map = {}
@@ -74,3 +75,6 @@ def get_problems(codeforcesUsers, rating, problemsNumber):
             final_problemset.append(f"https://codeforces.com/contest/{problem_contest_id}/problem/{problem_index}")
 
     return final_problemset
+
+
+print(get_problems(["rmz" , "Namika", "Tourist"], 800, 5))
