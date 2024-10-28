@@ -76,5 +76,3 @@ def get_problems(codeforcesUsers, rating, problemsNumber):
 
     return final_problemset
 
-
-print(get_problems(["rmz" , "Namika", "Tourist"], 800, 5))
